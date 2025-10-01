@@ -1,0 +1,99 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f5f5f5;
+    color: #1a3a52;
+}
+
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    opacity: 0;
+}
+
+h1.typing {
+    opacity: 1;
+}
+
+.cursor {
+    margin-left: 2px;
+    opacity: 1;
+}
+
+.cursor.blink-once {
+    animation: blink-once 1s;
+}
+
+.cursor.blink-twice {
+    animation: blink-twice 2s;
+}
+
+@keyframes blink-once {
+    0%, 35% {
+        opacity: 1;
+    }
+    35.1%, 70% {
+        opacity: 0;
+    }
+    70.1%, 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink-twice {
+    0%, 22.5% {
+        opacity: 1;
+    }
+    22.6%, 45% {
+        opacity: 0;
+    }
+    45.1%, 67.5% {
+        opacity: 1;
+    }
+    67.6%, 90% {
+        opacity: 0;
+    }
+    90.1%, 100% {
+        opacity: 1;
+    }
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #1a3a52, transparent);
+}
+
+a {
+    transition: all 0.3s ease;
+    position: relative;
+    color: #1a3a52;
+}
+
+a:hover {
+    color: #2563eb !important;
+    transform: translateX(3px);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+.section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.ls-wider {
+    letter-spacing: 3px;
+}
