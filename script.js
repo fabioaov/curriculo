@@ -1,13 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll("body > *:not(script):not(.container)");
-    elements.forEach((element) => {
-        if (!element.querySelector("h1")) {
-            element.style.opacity = "0";
-            element.style.transform = "translateY(20px)";
-            element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        }
-    });
-
     const innerElements = document.querySelectorAll("section, header > div:not(:has(h1)), header p");
     innerElements.forEach((element) => {
         element.style.opacity = "0";
@@ -34,6 +25,23 @@ window.addEventListener("load", function () {
         let index = 0;
 
         setTimeout(() => {
+            const elements = document.querySelectorAll("section, header > div:not(:has(h1)), header p");
+            const hrElement = document.querySelector("hr");
+
+            if (hrElement) {
+                hrElement.style.opacity = "1";
+                hrElement.style.transform = "translateY(0)";
+            }
+
+            elements.forEach((element, idx) => {
+                setTimeout(() => {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }, idx * 100);
+            });
+        }, 500);
+
+        setTimeout(() => {
             function typeWriter() {
                 const currentText = fullName.substring(0, index);
                 nameElement.innerHTML = currentText + '<span class="cursor">|</span>';
@@ -43,27 +51,6 @@ window.addEventListener("load", function () {
                     setTimeout(typeWriter, 100);
                 } else {
                     nameElement.querySelector(".cursor").classList.add("blink-twice");
-
-                    setTimeout(() => {
-                        nameElement.innerHTML = fullName;
-                        nameElement.classList.remove("typing");
-                        nameElement.style.opacity = "1";
-
-                        const elements = document.querySelectorAll("section, header > div:not(:has(h1)), header p");
-
-                        const hrElement = document.querySelector("hr");
-                        if (hrElement) {
-                            hrElement.style.opacity = "1";
-                            hrElement.style.transform = "translateY(0)";
-                        }
-
-                        elements.forEach((element, idx) => {
-                            setTimeout(() => {
-                                element.style.opacity = "1";
-                                element.style.transform = "translateY(0)";
-                            }, idx * 100);
-                        });
-                    }, 2000);
                 }
             }
 
