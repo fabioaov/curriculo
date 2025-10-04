@@ -18,6 +18,8 @@ window.addEventListener("load", function () {
     setTimeout(() => {
         const nameElement = document.querySelector("h1");
         const fullName = nameElement.textContent.trim();
+        const firstName = "Fábio";
+        const lastName = "Vieira";
 
         nameElement.classList.add("typing");
         nameElement.innerHTML = '<span class="cursor blink-once">|</span>';
@@ -43,7 +45,13 @@ window.addEventListener("load", function () {
 
         setTimeout(() => {
             function typeWriter() {
-                const currentText = fullName.substring(0, index);
+                let currentText = fullName.substring(0, index);
+
+                // Adiciona o <br> entre Fábio e Vieira em telas pequenas
+                if (index > firstName.length) {
+                    currentText = firstName + '<br class="md:hidden" /> ' + lastName.substring(0, index - firstName.length - 1);
+                }
+
                 nameElement.innerHTML = currentText + '<span class="cursor">|</span>';
 
                 if (index < fullName.length) {
